@@ -1,14 +1,25 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from pages.create_new_customer_account_page import CustomerNewAccount
 from pages.login_page import LoginPage
 from pages.eco_friendly_page import EcoFriendlyPage
 from pages.sale_page import SalePage
 
 
+# @pytest.fixture()
+# def driver():
+#     chrome_driver = webdriver.Chrome()
+#     chrome_driver.maximize_window()
+#     chrome_driver.implicitly_wait(3)
+#     yield chrome_driver
+
+
 @pytest.fixture()
 def driver():
-    chrome_driver = webdriver.Chrome()
+    options = Options()
+    options.add_argument("--headless")
+    chrome_driver = webdriver.Chrome(options=options)
     chrome_driver.maximize_window()
     chrome_driver.implicitly_wait(3)
     yield chrome_driver
