@@ -7,14 +7,6 @@ from pages.eco_friendly_page import EcoFriendlyPage
 from pages.sale_page import SalePage
 
 
-# @pytest.fixture()
-# def driver():
-#     chrome_driver = webdriver.Chrome()
-#     chrome_driver.maximize_window()
-#     chrome_driver.implicitly_wait(3)
-#     yield chrome_driver
-
-
 @pytest.fixture()
 def driver():
     options = Options()

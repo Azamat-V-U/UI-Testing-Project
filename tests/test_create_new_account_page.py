@@ -9,6 +9,7 @@ fake = Faker()
 @allure.story("Creating a new customer account")
 @allure.title("Create a new customer account with valid data")
 @pytest.mark.critical
+@pytest.mark.smoke
 def test_new_user_account_valid_data(create_new_account_page_page):
     create_new_account_page_page.open_page()
     create_new_account_page_page.fill_login_form(fake.name(), fake.last_name(), fake.email(), "Wp60_ce#9!", "Wp60_ce#9!")
@@ -21,6 +22,7 @@ def test_new_user_account_valid_data(create_new_account_page_page):
 @allure.story("Creating a new customer account")
 @allure.title("Create a new customer account with an existing email address")
 @pytest.mark.medium
+@pytest.mark.regression
 def test_create_new_user_account_with_existing_data(create_new_account_page_page):
     create_new_account_page_page.open_page()
     create_new_account_page_page.fill_login_form("Skyla", "Kemmer", "Laurence95@yahoo.com", "VShbp3hR3", "VShbp3hR3")
@@ -34,6 +36,7 @@ def test_create_new_user_account_with_existing_data(create_new_account_page_page
 @allure.story("Creating a new customer account")
 @allure.title("Create a new customer account with an invalid email address")
 @pytest.mark.medium
+@pytest.mark.extended
 def test_create_account_with_incorrect_email(create_new_account_page_page):
     create_new_account_page_page.open_page()
     create_new_account_page_page.fill_login_form("Kasandra", "Herzog", "Christoph1gmail.com", "SLcef4YBq", "SLcef4YBq")

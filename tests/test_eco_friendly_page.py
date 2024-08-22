@@ -6,6 +6,7 @@ import allure
 @allure.story("Eco Friendly page functionality verification")
 @allure.title("Compare products list: Adding and removing a product item.")
 @pytest.mark.critical
+@pytest.mark.smoke
 def test_compare_products_list(eco_friendly_page):
     eco_friendly_page.open_page()
     eco_friendly_page.add_item_to_compare_list()
@@ -23,6 +24,7 @@ def test_compare_products_list(eco_friendly_page):
 @allure.story("Eco Friendly page functionality verification")
 @allure.title("Products cart: Adding and deleting an item from the products cart")
 @pytest.mark.medium
+@pytest.mark.regression
 def test_item_in_products_cart(eco_friendly_page):
     eco_friendly_page.open_page()
     eco_friendly_page.add_item_to_cart()
@@ -41,6 +43,7 @@ def test_item_in_products_cart(eco_friendly_page):
 @allure.story("Eco Friendly page functionality verification")
 @allure.title("Filtering products by price")
 @pytest.mark.low
+@pytest.mark.extended
 def test_filter_items_by_price(eco_friendly_page):
     eco_friendly_page.open_page()
     eco_friendly_page.filter_items_by_price()
