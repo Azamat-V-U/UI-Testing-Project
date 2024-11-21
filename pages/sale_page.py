@@ -40,6 +40,7 @@ class SalePage(BasePage):
 
     @allure.step("Select and add item to the shopping cart in another tab")
     def add_product_to_cart(self):
+        self.driver.execute_script("window.scrollBy(0, 500);")
         wait = WebDriverWait(self.driver, 10, poll_frequency=1)
         selected_items = wait.until(EC.element_to_be_clickable(
             loc.selected_item_loc

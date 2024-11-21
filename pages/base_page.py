@@ -31,6 +31,7 @@ class BasePage:
 
     @allure.step("Check that the response message matches the expected one")
     def message_verification(self, text):
+        self.driver.execute_script("window.scrollBy(0, 700);")
         WebDriverWait(self.driver, 10).until(
             expected_conditions.text_is_not_empty_in_element(loc.text_message)
         )
@@ -41,7 +42,8 @@ class BasePage:
     @allure.step("Delete the added product item from the compare products list")
     def delete_item_from_compare_list(self):
         try:
-            wait = WebDriverWait(self.driver, 10, poll_frequency=1)
+            self.driver.execute_script("window.scrollBy(0, 700);")
+            wait = WebDriverWait(self.driver, 15, poll_frequency=1)
             item = wait.until(EC.element_to_be_clickable(lc.remove_item_loc))
             item.click()
             self.pop_up_button = wait.until(EC.presence_of_element_located(

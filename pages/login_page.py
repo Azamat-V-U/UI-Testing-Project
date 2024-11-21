@@ -8,6 +8,7 @@ class LoginPage(BasePage):
 
     @allure.step("Login with valid credentials")
     def log_in(self, email, password):
+        self.driver.execute_script("window.scrollBy(0, 700);")
         email_field = self.find(loc.email_field_loc)
         password_field = self.find(loc.password_field_loc)
         sign_in_button = self.find(loc.sign_in_button_loc)

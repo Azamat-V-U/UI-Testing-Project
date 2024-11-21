@@ -19,8 +19,9 @@ class EcoFriendlyPage(BasePage):
     @allure.step("Add the first product on the page item to the compare products list")
     def add_item_to_compare_list(self):
         try:
-            wait = WebDriverWait(self.driver, 10, poll_frequency=1)
+            wait = WebDriverWait(self.driver, 15, poll_frequency=1)
             selected_item = self.find(loc.selected_item_link_loc)
+            self.driver.execute_script("window.scrollBy(0, 700);")
             actions = ActionChains(self.driver)
             add_to_compare_btn = wait.until(EC.presence_of_element_located(
                 loc.add_to_compare_loc
@@ -36,6 +37,7 @@ class EcoFriendlyPage(BasePage):
     def add_item_to_cart(self):
         wait = WebDriverWait(self.driver, 10, poll_frequency=1)
         item_name = wait.until(EC.presence_of_element_located(loc.item_name_loc))
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", item_name)
         actions = ActionChains(self.driver)
         add_button = wait.until(EC.presence_of_element_located(loc.item_add_to_cart_loc))
         item_price = self.find(loc.item_price_loc)
@@ -91,6 +93,7 @@ class EcoFriendlyPage(BasePage):
         dropdown_button = wait.until(EC.element_to_be_clickable(
             loc.price_dropdown_loc
         ))
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", dropdown_button)
         price_link = self.find(loc.price_link_loc)
         actions = ActionChains(self.driver)
         actions.move_to_element(dropdown_button)
@@ -99,6 +102,7 @@ class EcoFriendlyPage(BasePage):
         parent_element = wait.until(EC.presence_of_element_located(
             loc.price_range_loc
         ))
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", parent_element)
         full_text = parent_element.text
         child_element = parent_element.find_element(*loc.price_range_child_loc)
         child_text = child_element.text
@@ -128,6 +132,7 @@ class EcoFriendlyPage(BasePage):
     @allure.step("Make sure that the added product item is in the compare products list")
     def compare_products_list_verification(self):
         try:
+            self.driver.execute_script("window.scrollBy(0, 700);")
             wait = WebDriverWait(self.driver, 15, poll_frequency=1)
             selected_item = wait.until(EC.presence_of_element_located(
                 loc.selected_item_link_loc

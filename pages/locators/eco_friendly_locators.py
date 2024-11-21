@@ -2,10 +2,13 @@ from selenium.webdriver.common.by import By
 
 
 item_name_loc = (By.XPATH, "(//a[@class='product-item-link'])[2]")
-add_to_compare_loc = (By.XPATH, "(//a[@class='action tocompare'])[1]")
+# add_to_compare_loc = (By.XPATH, "(//a[@class='action tocompare'])[1]")
+add_to_compare_loc = (By.CSS_SELECTOR, ".item.product-item:first-child .tocompare")
 
-selected_item_link_loc = (By.XPATH, "(//a[@class='product-item-link'])[1]")
-added_item_link_loc = (By.XPATH, "(//a[@data-bind='attr: {href: product_url}, html: name'])")
+# selected_item_link_loc = (By.XPATH, "(//a[@class='product-item-link'])[1]")
+selected_item_link_loc = (By.CSS_SELECTOR, ".item.product-item:first-child .product-item-link")
+# added_item_link_loc = (By.XPATH, "(//a[@data-bind='attr: {href: product_url}, html: name'])")
+added_item_link_loc = (By.CSS_SELECTOR, ".product-item-name a[data-bind='attr: {href: product_url}, html: name']")
 
 item_price_loc = (By.ID, "product-price-1919")
 item_size_loc = (By.XPATH, "(//div[@option-label='30'])[1]")
@@ -31,3 +34,6 @@ price_range_child_loc = (By.XPATH, ".//span[@class='filter-count-label']")
 
 items_list_loc = (By.XPATH, "(//ol[@class='products list items product-items'])")
 selected_items_loc = (By.XPATH, "(//li[@class='item product product-item'])")
+
+
+
