@@ -1,4 +1,5 @@
 import pytest
+import creds
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from pages.create_new_customer_account_page import CustomerNewAccount
@@ -9,12 +10,12 @@ from pages.sale_page import SalePage
 
 @pytest.fixture()
 def driver():
-    options = Options()
-    options.add_argument("--headless")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    chrome_driver = webdriver.Chrome(options=options)
-    # chrome_driver = webdriver.Chrome()
+    # options = Options()
+    # options.add_argument("--headless")
+    # options.add_argument("--no-sandbox")
+    # options.add_argument("--disable-dev-shm-usage")
+    # chrome_driver = webdriver.Chrome(options=options)
+    chrome_driver = webdriver.Chrome()
     chrome_driver.maximize_window()
     chrome_driver.implicitly_wait(3)
     yield chrome_driver
@@ -40,4 +41,4 @@ def sale_page(driver):
 def logged_in_user(driver):
     account = LoginPage(driver)
     account.open_page()
-    account.log_in("Laurence95@yahoo.com", "VShbp3hR3zjTdAy")
+    account.log_in(creds.existing_user_email, creds.existing_user_password)

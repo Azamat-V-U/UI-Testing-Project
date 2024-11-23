@@ -1,5 +1,6 @@
 import pytest
 import allure
+import creds
 from faker import Faker
 
 fake = Faker()
@@ -12,7 +13,9 @@ fake = Faker()
 @pytest.mark.smoke
 def test_new_user_account_valid_data(create_new_account_page_page):
     create_new_account_page_page.open_page()
-    create_new_account_page_page.fill_login_form(fake.name(), fake.last_name(), fake.email(), "Wp60_ce#9!", "Wp60_ce#9!")
+    create_new_account_page_page.fill_login_form(
+        fake.name(), fake.last_name(), fake.email(), creds.correct_password, creds.correct_password
+    )
     create_new_account_page_page.message_verification(
         "Thank you for registering with Main Website Store."
     )
@@ -25,7 +28,10 @@ def test_new_user_account_valid_data(create_new_account_page_page):
 @pytest.mark.regression
 def test_create_new_user_account_with_existing_data(create_new_account_page_page):
     create_new_account_page_page.open_page()
-    create_new_account_page_page.fill_login_form("Skyla", "Kemmer", "Laurence95@yahoo.com", "VShbp3hR3", "VShbp3hR3")
+    create_new_account_page_page.fill_login_form(
+        creds.existing_user_name, creds.existing_user_last_name, creds.existing_user_email,
+        creds.existing_user_password, creds.existing_user_password
+    )
     create_new_account_page_page.message_verification(
         "There is already an account with this email address. "
         "If you are sure that it is your email address, click here to get your password and access your account."
@@ -39,8 +45,9 @@ def test_create_new_user_account_with_existing_data(create_new_account_page_page
 @pytest.mark.extended
 def test_create_account_with_incorrect_email(create_new_account_page_page):
     create_new_account_page_page.open_page()
-    create_new_account_page_page.fill_login_form(fake.name(), fake.last_name(), "Christoph1gmail.com",
-                                                 "SLcef4YBq", "SLcef4YBq")
+    create_new_account_page_page.fill_login_form(fake.name(), fake.last_name(), creds.invalid_email,
+                                                 creds.correct_password, creds.correct_password
+                                                 )
     create_new_account_page_page.invalid_email_message_verification(
         "Please enter a valid email address (Ex: johndoe@domain.com)."
     )
@@ -53,7 +60,9 @@ def test_create_account_with_incorrect_email(create_new_account_page_page):
 @pytest.mark.low
 def test_create_account_with_incorrect_email(create_new_account_page_page):
     create_new_account_page_page.open_page()
-    create_new_account_page_page.fill_login_form(fake.name(), fake.last_name(), fake.email(), "SLcef", "SLcef")
+    create_new_account_page_page.fill_login_form(
+        fake.name(), fake.last_name(), fake.email(), creds.invalid_password, creds.invalid_password
+    )
     create_new_account_page_page.invalid_password_message_verification(
         "Minimum length of this field must be equal or greater than 8 symbols. "
         "Leading and trailing spaces will be ignored."
