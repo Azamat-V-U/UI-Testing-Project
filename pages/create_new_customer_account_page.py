@@ -45,9 +45,10 @@ class CustomerNewAccount(BasePage):
     #     assert error_message.text == text
 
     def first_last_name_required_field_message_verification(self, text):
-        first_name_message = self.find(loc.first_name_required_field_message_loc)
-        last_name_message = self.find(loc.last_name_required_field_message_loc)
-        if first_name_message:
-            assert first_name_message.text == text
-        elif last_name_message:
-            assert last_name_message.text == text
+        first_name_message = self.find(loc.first_name_required_field_message_loc, wait=True)
+        if first_name_message and first_name_message.is_displayed():
+            assert first_name_message.text == text, "First name error message does not match"
+        else:
+            last_name_message = self.find(loc.last_name_required_field_message_loc, wait=True)
+            assert last_name_message and last_name_message.is_displayed(), "Last name error message is not visible"
+            assert last_name_message.text == text, "Last name error message does not match"

@@ -23,7 +23,12 @@ class BasePage:
         else:
             raise NotImplementedError("Page can not be opened for this url")
 
-    def find(self, locator: tuple):
+    # def find(self, locator: tuple):
+    #     return self.driver.find_element(*locator)
+
+    def find(self, locator: tuple, wait=False, timeout=10):
+        if wait:
+            return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(*locator))
         return self.driver.find_element(*locator)
 
     def find_elements(self, locator: tuple):
