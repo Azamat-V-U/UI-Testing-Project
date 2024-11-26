@@ -33,3 +33,8 @@ class CustomerNewAccount(BasePage):
         error_message = self.find(loc.invalid_password_message_loc)
         print(error_message.text)
         assert error_message.text == text
+
+    def invalid_password_confirmation_message_verification(self, text):
+        error_message = self.find(loc.invalid_password_confirmation_message_loc)
+        print(error_message.text)
+        assert error_message.text == text

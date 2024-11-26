@@ -1,5 +1,4 @@
 import pytest
-import creds
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from pages.create_new_customer_account_page import CustomerNewAccount
@@ -23,7 +22,7 @@ def driver():
 
 
 @pytest.fixture()
-def create_new_account_page_page(driver):
+def create_new_account_page(driver):
     return CustomerNewAccount(driver)
 
 
@@ -41,4 +40,4 @@ def sale_page(driver):
 def logged_in_user(driver):
     account = LoginPage(driver)
     account.open_page()
-    account.log_in(creds.existing_user_email, creds.existing_user_password)
+    account.log_in("Christoph1@gmail.com", "Wp60_ce#9!")

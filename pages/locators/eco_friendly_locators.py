@@ -34,6 +34,3 @@ price_range_child_loc = (By.XPATH, ".//span[@class='filter-count-label']")
 
 items_list_loc = (By.XPATH, "(//ol[@class='products list items product-items'])")
 selected_items_loc = (By.XPATH, "(//li[@class='item product product-item'])")
-
-
-
