@@ -93,7 +93,7 @@ def test_create_account_empty_first_name_field(create_new_account_page):
     create_new_account_page.fill_login_form(
         "", fake.last_name(), fake.email(), "Wp60_ce#9!", "Wp60_ce#9!"
     )
-    create_new_account_page.first_name_required_field_message_verification(
+    create_new_account_page.first_last_name_required_field_message_verification(
         "This is a required field."
     )
 
