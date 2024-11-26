@@ -39,7 +39,15 @@ class CustomerNewAccount(BasePage):
         print(error_message.text)
         assert error_message.text == text
 
-    def first_name_required_field_message_verification(self, text):
-        error_message = self.find(loc.first_name_required_field_message_loc)
-        print(error_message.text)
-        assert error_message.text == text
+    # def first_name_required_field_message_verification(self, text):
+    #     error_message = self.find(loc.first_name_required_field_message_loc)
+    #     print(error_message.text)
+    #     assert error_message.text == text
+
+    def first_last_name_required_field_message_verification(self, text):
+        first_name_message = self.find(loc.first_name_required_field_message_loc)
+        last_name_message = self.find(loc.last_name_required_field_message_loc)
+        if first_name_message:
+            assert first_name_message.text == text
+        elif last_name_message:
+            assert last_name_message.text == text

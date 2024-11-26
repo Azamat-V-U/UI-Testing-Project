@@ -41,7 +41,7 @@ def test_create_new_user_account_existing_data(create_new_account_page):
 @allure.story("Creating a new customer account")
 @allure.title("Create a new customer account with an invalid email address")
 @pytest.mark.medium
-@pytest.mark.extended
+@pytest.mark.regression
 def test_create_account_incorrect_email(create_new_account_page):
     create_new_account_page.open_page()
     create_new_account_page.fill_login_form(fake.name(), fake.last_name(), "Christoph1gmail.com",
@@ -56,7 +56,7 @@ def test_create_account_incorrect_email(create_new_account_page):
 @allure.story("Creating a new customer account")
 @allure.title("Create a new customer account with an invalid password length")
 @pytest.mark.low
-@pytest.mark.extended
+@pytest.mark.regression
 def test_create_account_incorrect_password(create_new_account_page):
     create_new_account_page.open_page()
     create_new_account_page.fill_login_form(
@@ -72,7 +72,7 @@ def test_create_account_incorrect_password(create_new_account_page):
 @allure.story("Creating a new customer account")
 @allure.title("Create a new customer account with an incorrect password confirmation data")
 @pytest.mark.medium
-@pytest.mark.extended
+@pytest.mark.regression
 def test_create_account_incorrect_password_confirmation_data(create_new_account_page):
     create_new_account_page.open_page()
     create_new_account_page.fill_login_form(
@@ -94,5 +94,20 @@ def test_create_account_empty_first_name_field(create_new_account_page):
         "", fake.last_name(), fake.email(), "Wp60_ce#9!", "Wp60_ce#9!"
     )
     create_new_account_page.first_name_required_field_message_verification(
+        "This is a required field."
+    )
+
+
+@allure.feature("Create New Customer account page")
+@allure.story("Creating a new customer account")
+@allure.title("Create a new customer account with empty last name field")
+@pytest.mark.medium
+@pytest.mark.extended
+def test_create_account_empty_first_name_field(create_new_account_page):
+    create_new_account_page.open_page()
+    create_new_account_page.fill_login_form(
+        fake.name(), "", fake.email(), "Wp60_ce#9!", "Wp60_ce#9!"
+    )
+    create_new_account_page.first_last_name_required_field_message_verification(
         "This is a required field."
     )

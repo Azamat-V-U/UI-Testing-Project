@@ -43,7 +43,7 @@ def test_item_in_products_cart(eco_friendly_page):
 @allure.story("Eco Friendly page functionality verification")
 @allure.title("Filtering products by price")
 @pytest.mark.low
-@pytest.mark.extended
+@pytest.mark.regression
 def test_filter_items_by_price(eco_friendly_page):
     eco_friendly_page.open_page()
     eco_friendly_page.filter_items_by_price()
