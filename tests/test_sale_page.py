@@ -35,6 +35,6 @@ def test_item_in_cart(sale_page, eco_friendly_page, logged_in_user):
 @pytest.mark.regression
 def test_links_verification(sale_page):
     sale_page.open_page()
-    sale_page.accept_cookies()
+    # sale_page.accept_cookies()
     sale_page.click_on_links()
     sale_page.link_names_verification()

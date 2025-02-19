@@ -28,7 +28,7 @@ def test_new_user_account_valid_data(create_new_account_page):
 @pytest.mark.regression
 def test_create_new_user_account_existing_data(create_new_account_page):
     create_new_account_page.open_page()
-    create_new_account_page.accept_cookies()
+    # create_new_account_page.accept_cookies()
     create_new_account_page.fill_login_form(
         "Skyla", "Kemmer", "Laurence95@yahoo.com",
         "VShbp3hR3zjTdAy", "VShbp3hR3zjTdAy"
@@ -46,7 +46,7 @@ def test_create_new_user_account_existing_data(create_new_account_page):
 @pytest.mark.regression
 def test_create_account_incorrect_email(create_new_account_page):
     create_new_account_page.open_page()
-    create_new_account_page.accept_cookies()
+    # create_new_account_page.accept_cookies()
     create_new_account_page.fill_login_form(fake.name(), fake.last_name(), "Christoph1gmail.com",
                                             "Wp60_ce#9!", "Wp60_ce#9!"
                                             )
@@ -62,7 +62,7 @@ def test_create_account_incorrect_email(create_new_account_page):
 @pytest.mark.regression
 def test_create_account_incorrect_password(create_new_account_page):
     create_new_account_page.open_page()
-    create_new_account_page.accept_cookies()
+    # create_new_account_page.accept_cookies()
     create_new_account_page.fill_login_form(
         fake.name(), fake.last_name(), fake.email(), "SLcef", "SLcef"
     )
@@ -79,7 +79,7 @@ def test_create_account_incorrect_password(create_new_account_page):
 @pytest.mark.regression
 def test_create_account_incorrect_password_confirmation_data(create_new_account_page):
     create_new_account_page.open_page()
-    create_new_account_page.accept_cookies()
+    # create_new_account_page.accept_cookies()
     create_new_account_page.fill_login_form(
         fake.name(), fake.last_name(), fake.email(), "Wp60_ce#9!", "Wp60_ce#9!Tvo"
     )
@@ -95,7 +95,7 @@ def test_create_account_incorrect_password_confirmation_data(create_new_account_
 @pytest.mark.extended
 def test_create_account_empty_first_name_field(create_new_account_page):
     create_new_account_page.open_page()
-    create_new_account_page.accept_cookies()
+    # create_new_account_page.accept_cookies()
     create_new_account_page.fill_login_form(
         "", fake.last_name(), fake.email(), "Wp60_ce#9!", "Wp60_ce#9!"
     )
@@ -111,7 +111,7 @@ def test_create_account_empty_first_name_field(create_new_account_page):
 @pytest.mark.extended
 def test_create_account_empty_last_name_field(create_new_account_page):
     create_new_account_page.open_page()
-    create_new_account_page.accept_cookies()
+    # create_new_account_page.accept_cookies()
     create_new_account_page.fill_login_form(
         fake.name(), "", fake.email(), "Wp60_ce#9!", "Wp60_ce#9!"
     )

@@ -26,9 +26,9 @@ class BasePage:
     # def find(self, locator: tuple):
     #     return self.driver.find_element(*locator)
 
-    def accept_cookies(self):
-        agree_button = self.find(lc.agree_cookie_button_loc, wait=True)
-        agree_button.click()
+    # def accept_cookies(self):
+    #     agree_button = self.find(lc.agree_cookie_button_loc, wait=True)
+    #     agree_button.click()
 
     def find(self, locator: tuple[str, str], wait=False, timeout=15):
         if wait:
