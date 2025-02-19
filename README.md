@@ -1,3 +1,3 @@
 # UI-Testing-Project
 
-This project is designed to test the https://magento.softwaretestingboard.com/ using Selenium WebDriver and Pytest libraries.
+This project is designed for testing https://magento.softwaretestingboard.com / using the Selenium WebDriver and Pytest libraries.
