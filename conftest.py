@@ -46,5 +46,5 @@ def login_page(driver):
 def logged_in_user(driver):
     account = LoginPage(driver)
     account.open_page()
-    account.accept_cookies()
+    # account.accept_cookies()
     account.log_in_valid_data("Christoph@gmail.com", "Wp60_ce#6R")

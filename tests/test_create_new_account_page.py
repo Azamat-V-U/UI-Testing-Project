@@ -12,7 +12,7 @@ fake = Faker()
 @pytest.mark.smoke
 def test_new_user_account_valid_data(create_new_account_page):
     create_new_account_page.open_page()
-    create_new_account_page.accept_cookies()
+    # create_new_account_page.accept_cookies()
     create_new_account_page.fill_login_form(
         fake.name(), fake.last_name(), fake.email(), "Wp60_ce#9!", "Wp60_ce#9!"
     )

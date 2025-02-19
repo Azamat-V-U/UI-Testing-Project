@@ -9,7 +9,7 @@ import allure
 @pytest.mark.smoke
 def test_compare_products_list(eco_friendly_page):
     eco_friendly_page.open_page()
-    eco_friendly_page.accept_cookies()
+    # eco_friendly_page.accept_cookies()
     eco_friendly_page.add_item_to_compare_list()
     eco_friendly_page.message_verification(
         "You added product Ana Running Short to the comparison list."
