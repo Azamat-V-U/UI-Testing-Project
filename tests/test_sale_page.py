@@ -20,7 +20,7 @@ def test_item_in_compare_products_list(sale_page, logged_in_user):
 @allure.story("Sale page functionality verification")
 @allure.title("Product cart: Adding and removing an item as a logged-in user")
 @pytest.mark.medium
-@pytest.mark.regression
+@pytest.mark.extended
 def test_item_in_cart(sale_page, eco_friendly_page, logged_in_user):
     sale_page.open_page()
     sale_page.add_product_to_cart()
@@ -35,5 +35,6 @@ def test_item_in_cart(sale_page, eco_friendly_page, logged_in_user):
 @pytest.mark.regression
 def test_links_verification(sale_page):
     sale_page.open_page()
+    sale_page.accept_cookies()
     sale_page.click_on_links()
     sale_page.link_names_verification()

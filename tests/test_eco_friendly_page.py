@@ -9,6 +9,7 @@ import allure
 @pytest.mark.smoke
 def test_compare_products_list(eco_friendly_page):
     eco_friendly_page.open_page()
+    eco_friendly_page.accept_cookies()
     eco_friendly_page.add_item_to_compare_list()
     eco_friendly_page.message_verification(
         "You added product Ana Running Short to the comparison list."
@@ -27,6 +28,7 @@ def test_compare_products_list(eco_friendly_page):
 @pytest.mark.regression
 def test_item_in_products_cart(eco_friendly_page):
     eco_friendly_page.open_page()
+    eco_friendly_page.accept_cookies()
     eco_friendly_page.add_item_to_cart()
     eco_friendly_page.message_verification(
         "You added Fiona Fitness Short to your shopping cart."
@@ -46,5 +48,6 @@ def test_item_in_products_cart(eco_friendly_page):
 @pytest.mark.regression
 def test_filter_items_by_price(eco_friendly_page):
     eco_friendly_page.open_page()
+    eco_friendly_page.accept_cookies()
     eco_friendly_page.filter_items_by_price()
     eco_friendly_page.filtered_items_number_verification()

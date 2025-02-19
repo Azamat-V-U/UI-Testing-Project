@@ -13,6 +13,7 @@ def driver():
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
+    options.add_argument('--ignore-certificate-errors')
     chrome_driver = webdriver.Chrome(options=options)
     # chrome_driver = webdriver.Chrome()
     chrome_driver.maximize_window()
@@ -37,7 +38,13 @@ def sale_page(driver):
 
 
 @pytest.fixture()
+def login_page(driver):
+    return LoginPage(driver)
+
+
+@pytest.fixture()
 def logged_in_user(driver):
     account = LoginPage(driver)
     account.open_page()
-    account.log_in("Christoph1@gmail.com", "Wp60_ce#9!")
+    account.accept_cookies()
+    account.log_in_valid_data("Christoph@gmail.com", "Wp60_ce#6R")

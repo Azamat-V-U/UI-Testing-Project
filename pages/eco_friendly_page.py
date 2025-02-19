@@ -6,6 +6,7 @@ from selenium.common.exceptions import *
 from utils import expected_conditions
 from pages.base_page import BasePage
 from pages.locators import eco_friendly_locators as loc
+from utils import expected_conditions
 
 
 class EcoFriendlyPage(BasePage):
@@ -62,11 +63,15 @@ class EcoFriendlyPage(BasePage):
     @allure.step("Check and delete item from the  products cart")
     def check_item_details_in_cart(self):
         wait = WebDriverWait(self.driver, 10, poll_frequency=1)
-        wait.until(EC.presence_of_element_located(
-            loc.counter_link_loc
-        ))
+        # time.sleep(3)
+        # wait.until(expected_conditions.text_is_not_empty_in_element(
+        #     loc.counter_link_loc
+        # ))
+        # cart_icon = wait.until(
+        #     EC.text_to_be_present_in_element_value(loc.counter_link_loc, "1")
+        # )
         cart_icon = wait.until(
-            EC.presence_of_element_located(loc.cart_icon_link_loc)
+            EC.element_to_be_clickable(loc.counter_link_loc)
         )
         actions = ActionChains(self.driver)
         actions.move_to_element(cart_icon).click().perform()

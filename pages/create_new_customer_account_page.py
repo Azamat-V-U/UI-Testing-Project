@@ -39,16 +39,23 @@ class CustomerNewAccount(BasePage):
         print(error_message.text)
         assert error_message.text == text
 
-    # def first_name_required_field_message_verification(self, text):
-    #     error_message = self.find(loc.first_name_required_field_message_loc)
-    #     print(error_message.text)
-    #     assert error_message.text == text
-
     def first_last_name_required_field_message_verification(self, text):
-        first_name_message = self.find(loc.first_name_required_field_message_loc, wait=True)
+        first_name_message = None
+        last_name_message = None
+
+        try:
+            first_name_message = self.find(loc.first_name_required_field_message_loc, wait=True)
+        except:
+            pass
+
+        try:
+            last_name_message = self.find(loc.last_name_required_field_message_loc, wait=True)
+        except:
+            pass
+
         if first_name_message and first_name_message.is_displayed():
             assert first_name_message.text == text, "First name error message does not match"
-        else:
-            last_name_message = self.find(loc.last_name_required_field_message_loc, wait=True)
-            assert last_name_message and last_name_message.is_displayed(), "Last name error message is not visible"
+        elif last_name_message and last_name_message.is_displayed():
             assert last_name_message.text == text, "Last name error message does not match"
+        else:
+            raise AssertionError("Neither first name nor last name error messages were found.")

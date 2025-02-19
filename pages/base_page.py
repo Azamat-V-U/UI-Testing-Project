@@ -26,7 +26,11 @@ class BasePage:
     # def find(self, locator: tuple):
     #     return self.driver.find_element(*locator)
 
-    def find(self, locator: tuple[str, str], wait=False, timeout=10):
+    def accept_cookies(self):
+        agree_button = self.find(lc.agree_cookie_button_loc, wait=True)
+        agree_button.click()
+
+    def find(self, locator: tuple[str, str], wait=False, timeout=15):
         if wait:
             return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
         return self.driver.find_element(*locator)
@@ -37,8 +41,11 @@ class BasePage:
     @allure.step("Check that the response message matches the expected one")
     def message_verification(self, text):
         self.driver.execute_script("window.scrollBy(0, 700);")
+        # WebDriverWait(self.driver, 10).until(
+        #     expected_conditions.text_is_not_empty_in_element(loc.text_message)
+        # )
         WebDriverWait(self.driver, 10).until(
-            expected_conditions.text_is_not_empty_in_element(loc.text_message)
+            EC.presence_of_element_located(loc.text_message)
         )
         message = self.find(loc.text_message)
         print(message.text)
