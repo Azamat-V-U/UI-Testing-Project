@@ -6,3 +6,4 @@ __pycache__
 allure-results
 allure-reports
 creds.py
+.env

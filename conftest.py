@@ -6,6 +6,9 @@ from pages.create_new_customer_account_page import CustomerNewAccount
 from pages.login_page import LoginPage
 from pages.eco_friendly_page import EcoFriendlyPage
 from pages.sale_page import SalePage
+from dotenv import load_dotenv
+
+load_dotenv()
 
 EMAIL = os.getenv("EMAIL")
 PASSWORD = os.getenv("PASSWORD")
@@ -51,5 +54,4 @@ def logged_in_user(driver):
     account = LoginPage(driver)
     account.open_page()
     # account.accept_cookies()
-    # account.log_in_valid_data("Christoph@gmail.com", "Wp60_ce#6R")
     account.log_in_valid_data(EMAIL, PASSWORD)
