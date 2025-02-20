@@ -80,6 +80,11 @@ jobs:
     needs: download-history
     name: Run autotests
     steps:
+      - name: Use Secrets
+        run: echo "The secrets are EMAIL and PASSWORD"
+        env:
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
       - name: Checkout autotests
         uses: actions/checkout@v4
       - name: Set up Python environment
@@ -90,11 +95,6 @@ jobs:
         run: pip install -r requirements.txt
       - name: Download artifacts
         uses: actions/download-artifact@v4
-      - name: Use Secrets
-        run: echo "The secrets are EMAIL and PASSWORD"
-        env:
-          EMAIL: ${{ secrets.EMAIL }}
-          PASSWORD: ${{ secrets.PASSWORD }}
       - name: run all tests
         if: "github.event.inputs.deployment_target == 'all'"
         run: pytest -v --alluredir=allure-results
