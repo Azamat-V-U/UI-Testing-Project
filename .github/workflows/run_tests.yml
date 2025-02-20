@@ -82,6 +82,9 @@ jobs:
     steps:
       - name: Use Secrets
         run: echo "The secrets are EMAIL and PASSWORD"
+        with:
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
         env:
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
