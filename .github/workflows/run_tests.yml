@@ -14,6 +14,10 @@ on:
           - extended
           - all
 
+env:
+  EMAIL: ${{secrets.EMAIL}}
+  PASSWORD: ${{secrets.PASSWORD}}
+
 permissions:
   contents: read
   pages: write
