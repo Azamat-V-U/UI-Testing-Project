@@ -1,5 +1,12 @@
 import pytest
 import allure
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+EMAIL = os.getenv("EMAIL")
+PASSWORD = os.getenv("PASSWORD")
 
 
 @allure.feature("Login page")
@@ -10,4 +17,4 @@ import allure
 def test_login_with_valid_data(login_page):
     login_page.open_page()
     # login_page.accept_cookies()
-    login_page.log_in_valid_data("Christoph1@gmail.com", "Wp60_ce#9!")
+    login_page.log_in_valid_data(EMAIL, PASSWORD)

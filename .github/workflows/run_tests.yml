@@ -17,6 +17,7 @@ on:
 env:
   EMAIL: ${{secrets.EMAIL}}
   PASSWORD: ${{secrets.PASSWORD}}
+  PASSWORD_CONFIRM: ${{secrets.PASSWORD_CONFIRM}}
 
 permissions:
   contents: read
