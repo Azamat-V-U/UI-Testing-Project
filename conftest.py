@@ -1,4 +1,5 @@
 import pytest
+import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from pages.create_new_customer_account_page import CustomerNewAccount
@@ -6,8 +7,8 @@ from pages.login_page import LoginPage
 from pages.eco_friendly_page import EcoFriendlyPage
 from pages.sale_page import SalePage
 
-EMAIL = None
-PASSWORD = None
+EMAIL = os.getenv("EMAIL")
+PASSWORD = os.getenv("PASSWORD")
 
 
 @pytest.fixture()
