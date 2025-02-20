@@ -14,9 +14,9 @@ on:
           - extended
           - all
 
-env:
-  EMAIL: ${{secrets.EMAIL}}
-  PASSWORD: ${{secrets.PASSWORD}}
+# env:
+#   EMAIL: ${{secrets.EMAIL}}
+#   PASSWORD: ${{secrets.PASSWORD}}
 
 permissions:
   contents: read
@@ -90,6 +90,11 @@ jobs:
         run: pip install -r requirements.txt
       - name: Download artifacts
         uses: actions/download-artifact@v4
+      - name: Use Secrets
+        run: echo "The secrets are EMAIL and PASSWORD"
+        env:
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
       - name: run all tests
         if: "github.event.inputs.deployment_target == 'all'"
         run: pytest -v --alluredir=allure-results
