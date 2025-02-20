@@ -14,9 +14,9 @@ on:
           - extended
           - all
 
-# env:
-#   EMAIL: ${{secrets.EMAIL}}
-#   PASSWORD: ${{secrets.PASSWORD}}
+env:
+  EMAIL: ${{secrets.EMAIL}}
+  PASSWORD: ${{secrets.PASSWORD}}
 
 permissions:
   contents: read
@@ -80,10 +80,6 @@ jobs:
     needs: download-history
     name: Run autotests
     steps:
-      - name: Use Secrets
-        env:
-          EMAIL: ${{ secrets.EMAIL }}
-          PASSWORD: ${{ secrets.PASSWORD }}
       - name: Checkout autotests
         uses: actions/checkout@v4
       - name: Set up Python environment
